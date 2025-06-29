@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 type Node struct {
 	Val    int
 	Left   *Node
@@ -11,25 +9,15 @@ type Node struct {
 }
 
 func Search(node *Node, value int) bool {
-	if node.Parent == nil && node.Val == value {
-		fmt.Println("find at root")
-		return true
-	}
-
 	if node.Val == value {
 		return true
 	}
-
 	if value < node.Val && node.Left != nil {
-		path := *node.path
-		path = append(path, "move left")
-		node.path = &path
+		Record(node, "move left")
 		node.Left.Parent = node
 		return Search(node.Left, value)
 	} else if value > node.Val && node.Right != nil {
-		path := *node.path
-		path = append(path, "move right")
-		node.path = &path
+		Record(node, "move right")
 		node.Right.Parent = node
 		return Search(node.Right, value)
 	}
