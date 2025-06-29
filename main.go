@@ -33,6 +33,7 @@ func Insert(node *Node, value int) bool {
 		if node.Left != nil {
 			// move left
 			Record(node, "move left")
+			node.Parent = node
 			return Insert(node.Left, value)
 		} else {
 			// if left is nil, insert left
@@ -44,6 +45,7 @@ func Insert(node *Node, value int) bool {
 		if node.Right != nil {
 			// move right
 			Record(node, "move right")
+			node.Parent = node
 			return Insert(node.Right, value)
 		} else {
 			// if right is nil, insert right
