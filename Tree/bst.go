@@ -1,5 +1,11 @@
 package tree
 
+type Dict interface {
+	Search(value int) bool
+	Insert(value int) bool
+	Delete()
+}
+
 type Node struct {
 	Val    int
 	Left   *Node
@@ -101,10 +107,4 @@ func Delete(node *Node, value int) {
 
 func Record(node *Node, operation string) {
 	(*node.path) = append((*node.path), operation)
-}
-
-type Dict interface {
-	Search(value int) bool
-	Insert(value int) bool
-	Delete()
 }
