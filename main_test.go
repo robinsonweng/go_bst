@@ -23,7 +23,7 @@ func TestSearchShouldReturnTrueWhenValueExists(t *testing.T) {
 	result := Search(&node, 3)
 
 	assert.Equal(t, true, result)
-	assert.Equal(t, []string{"right"}, *node.path)
+	assert.Equal(t, []string{"move right"}, *node.path)
 }
 
 func TestSearchShouldReturnFalseWhenValueDontExists(t *testing.T) {
@@ -34,9 +34,17 @@ func TestSearchShouldReturnFalseWhenValueDontExists(t *testing.T) {
 	result := Search(&node, 4)
 
 	assert.Equal(t, false, result)
-	assert.Equal(t, []string{"right"}, *node.path)
+	assert.Equal(t, []string{"move right"}, *node.path)
 }
 
 func TestInsertShouldReturnTrueWhenInsertSuccess(t *testing.T) {
+	path := &[]string{}
+	node := Node{Val: 2, path: path}
+	node.Left = &Node{Val: 1, path: path}
+	node.Right = &Node{Val: 3, path: path}
 
+	result := Insert(&node, 4)
+
+	assert.Equal(t, true, result)
+	assert.Equal(t, []string{"move right", "insert right"}, *node.path)
 }
