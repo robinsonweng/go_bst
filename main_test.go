@@ -75,7 +75,7 @@ func TestTraversalShouldReturnASCOrderValueWhenGivenBalancedBST(t *testing.T) {
 	rightTree.Right = &Node{Val: 400}
 
 	path := &[]int{}
-	Traversal(&node, path)
+	ASCTraversal(&node, path)
 
 	assert.Equal(t, []int{10, 20, 30, 100, 150, 200, 400}, *path)
 }
