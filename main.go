@@ -59,6 +59,22 @@ func Insert(node *Node, value int) bool {
 	return false
 }
 
+func Traversal(node *Node, path *[]int) {
+	// in order traversal, left, self, right
+	if node.Left != nil {
+		Record(node, "move left")
+		node.Left.path = node.path
+		Traversal(node.Left, path)
+	}
+	Record(node, "self")
+	(*path) = append((*path), node.Val)
+	if node.Right != nil {
+		Record(node, "move right")
+		node.Right.path = node.path
+		Traversal(node.Right, path)
+	}
+}
+
 func Delete(node *Node, value int) {
 
 }
