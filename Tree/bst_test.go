@@ -100,3 +100,16 @@ func TestDESCTraversalShouldReturnDESCOrderValueWhenGivenBalancedBST(t *testing.
 
 	assert.Equal(t, []int{400, 200, 150, 100, 30, 20, 10}, *path)
 }
+
+func TestDeleteShouldReturnCorrectTreeWhenGivenBalancedBSTWithOneDepth(t *testing.T) {
+	node := Node{Val: 100, path: &[]string{}}
+	node.Left = &Node{Val: 20}
+	node.Right = &Node{Val: 200}
+
+	Delete(&node, 100)
+
+	path := &[]int{}
+	ASCTraversal(&node, path)
+
+	assert.Equal(t, []int{20, 200}, *path)
+}

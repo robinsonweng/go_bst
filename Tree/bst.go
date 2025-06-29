@@ -102,7 +102,7 @@ func DESCTraversal(node *Node, path *[]int) {
 }
 
 func Delete(node *Node, value int) {
-
+	panic("unhandle error")
 }
 
 func Record(node *Node, operation string) {
