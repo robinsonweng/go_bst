@@ -66,12 +66,32 @@ func ASCTraversal(node *Node, path *[]int) {
 		node.Left.path = node.path
 		ASCTraversal(node.Left, path)
 	}
+
 	Record(node, "self")
 	(*path) = append((*path), node.Val)
+
 	if node.Right != nil {
 		Record(node, "move right")
 		node.Right.path = node.path
 		ASCTraversal(node.Right, path)
+	}
+}
+
+func DESCTraversal(node *Node, path *[]int) {
+	// traversal so the return path order is DESC
+	if node.Right != nil {
+		Record(node, "move right")
+		node.Right.path = node.path
+		DESCTraversal(node.Right, path)
+	}
+
+	Record(node, "self")
+	(*path) = append((*path), node.Val)
+
+	if node.Left != nil {
+		Record(node, "move left")
+		node.Left.path = node.path
+		DESCTraversal(node.Left, path)
 	}
 }
 
