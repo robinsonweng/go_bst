@@ -38,12 +38,8 @@ func Search(node *Node, value int) bool {
 }
 
 func Insert(node *Node, value int) bool {
-	if node.Parent == nil && node.Val == value {
-		fmt.Println("find at root")
-		return false
-	}
-
 	if node.Val == value {
+		Record(node, "value exists")
 		return false
 	} else if value < node.Val {
 		if node.Left != nil {
@@ -68,14 +64,18 @@ func Insert(node *Node, value int) bool {
 			return true
 		}
 	}
+
+	Record(node, "unknown error")
 	return false
+}
+
+func Delete(node *Node, value int) {
+
 }
 
 func Record(node *Node, operation string) {
 	(*node.path) = append((*node.path), operation)
 }
-
-func (bst *Node) Delete() {}
 
 type Dict interface {
 	Search(value int) bool

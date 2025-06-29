@@ -48,3 +48,13 @@ func TestInsertShouldReturnTrueWhenInsertSuccess(t *testing.T) {
 	assert.Equal(t, true, result)
 	assert.Equal(t, []string{"move right", "insert right"}, *node.path)
 }
+
+func TestInsertShouldReturnFalseWhenInsertValueAlreadyExists(t *testing.T) {
+	path := &[]string{}
+	node := Node{Val: 2, path: path}
+
+	result := Insert(&node, 2)
+
+	assert.Equal(t, false, result)
+	assert.Equal(t, []string{"value exists"}, *node.path)
+}
